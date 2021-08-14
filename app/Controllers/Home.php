@@ -16,9 +16,9 @@ class Home extends Controller
     $nowPlaying = $this->moviesModel->getNowPlaying();
     $popular = $this->moviesModel->getPopularMovies();
 
-    for($i = 0; $i < count($popular); $i++) {
-      $popular[$i]["overview"] = translate($popular[$i]['overview']);
-    } 
+    // for($i = 0; $i < count($popular); $i++) {
+    //   $popular[$i]["overview"] = translate($popular[$i]['overview']);
+    // } 
 
     $data = [
       'title' => 'Home',
