@@ -1,20 +1,24 @@
 <?php
 
-use App\Models\MoviesModel;
+use App\Models\MovieModel;
+use App\Models\TranslateModel;
 
 class Home extends Controller
 {
-  protected $moviesModel;
+  protected 
+    $movieModel,
+    $translateModel;
 
   public function __construct()
   {
-    $this->moviesModel = new MoviesModel();
+    $this->movieModel = new MovieModel();
+    $this->translateModel = new TranslateModel();
   }
 
   public function index()
   {
-    $nowPlaying = $this->moviesModel->getNowPlaying();
-    $popular = $this->moviesModel->getPopularMovies();
+    $nowPlaying = $this->movieModel->getNowPlaying();
+    $popular = $this->movieModel->getPopularMovies();
 
     $data = [
       'title' => 'Home | Film',
@@ -30,21 +34,21 @@ class Home extends Controller
 
   public function detail($id)
   {
-    $detail = $this->moviesModel->getMovieDetails($id);
-    $video = $this->moviesModel->getVideos($id);
-    $credit = $this->moviesModel->getCredits($id);
-    $review = $this->moviesModel->getReviews($id);
-    $recommendation = $this->moviesModel->getRecommendations($id);
+    $detail = $this->movieModel->getMovieDetails($id);
+    $video = $this->movieModel->getVideos($id);
+    $credit = $this->movieModel->getCredits($id);
+    $review = $this->movieModel->getReviews($id);
+    $recommendation = $this->movieModel->getRecommendations($id);
     
     for($i = 0; $i < count($detail["spoken_languages"]); $i++) {
-      $detail["spoken_languages"][$i]["english_name"] = translate($detail["spoken_languages"][$i]["english_name"]);
+      $detail["spoken_languages"][$i]["english_name"] = $this->translateModel->translate($detail["spoken_languages"][$i]["english_name"]);
     }
 
     for($i = 0; $i < count($detail["production_countries"]); $i++) {
-      $detail["production_countries"][$i]["name"] = translate($detail["production_countries"][$i]["name"]);
+      $detail["production_countries"][$i]["name"] = $this->translateModel->translate($detail["production_countries"][$i]["name"]);
     }
 
-    $detail["overview"] = translate($detail["overview"]);
+    $detail["overview"] = $this->translateModel->translate($detail["overview"]);
 
     $data = [
       'title' => 'Detail Film',

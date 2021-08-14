@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class MoviesModel 
+class MovieModel 
 {
   public function getNowPlaying()
   {
