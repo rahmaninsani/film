@@ -6,7 +6,7 @@ class MoviesModel
 {
   public function getNowPlaying()
   {
-    $request = "https://api.themoviedb.org/3/movie/now_playing?api_key=469d97658ba36c86f1add30db4d49b25&language=en-US&page=1";
+    $request = "https://api.themoviedb.org/3/movie/now_playing?api_key=".APIKEY."&language=en-US&page=1";
     $json = file_get_contents($request);
     $arr = json_decode($json, TRUE);
     $result = $arr["results"];
@@ -16,7 +16,7 @@ class MoviesModel
 
   public function getPopularMovies()
   {
-    $request = "https://api.themoviedb.org/3/movie/popular?api_key=469d97658ba36c86f1add30db4d49b25&language=en-US&page=1";
+    $request = "https://api.themoviedb.org/3/movie/popular?api_key=".APIKEY."&language=en-US&page=1";
     $json = file_get_contents($request);
     $arr = json_decode($json, TRUE);
     $result = $arr["results"];
@@ -24,7 +24,59 @@ class MoviesModel
     return $result; 
 
   }
-}
 
+  public function getMovieDetails($id)
+  {
+    $request = "https://api.themoviedb.org/3/movie/$id?api_key=".APIKEY."&language=en-US";
+    $json = file_get_contents($request);
+    $result = json_decode($json, TRUE);
+    
+    return $result; 
+
+  }
+
+  public function getVideos($id)
+  {
+    $request = "https://api.themoviedb.org/3/movie/$id/videos?api_key=".APIKEY."&language=en-US";
+    $json = file_get_contents($request);
+    $arr = json_decode($json, TRUE);
+    $result = $arr['results'][0]['key'];
+
+    return $result; 
+
+  }
+
+  public function getCredits($id)
+  {  
+    $request = "https://api.themoviedb.org/3/movie/$id/credits?api_key=".APIKEY."&language=en-US";
+    $json = file_get_contents($request);
+    $result = json_decode($json, TRUE);
+    
+    return $result; 
+
+  }
+
+  public function getRecommendations($id)
+  { 
+    $request = "https://api.themoviedb.org/3/movie/$id/recommendations?api_key=".APIKEY."&language=en-US";
+    $json = file_get_contents($request);
+    $arr = json_decode($json, TRUE);
+    $result = $arr['results'];
+
+    return $result; 
+
+  }
+
+  public function getReviews($id)
+  { 
+    $request = "https://api.themoviedb.org/3/movie/$id/reviews?api_key=".APIKEY."&language=en-US";
+    $json = file_get_contents($request);
+    $arr = json_decode($json, TRUE);
+    $result = $arr['results'];
+
+    return $result; 
+
+  }
+}
 
 ?>

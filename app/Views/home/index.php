@@ -19,12 +19,8 @@
                 </div>
                 <div class="d-over bg-highlight-bottom">
                   <h4 class="entity-title">
-                    <a class="content-link" href="movie-info-sidebar-right.html"><?= $np['title']; ?></a>
+                    <a class="content-link" href="<?= BASEURL; ?>/home/detail/<?= $np['id']; ?>"><?= $np['title']; ?></a>
                   </h4>
-                  <!-- <div class="entity-category">
-                    <a class="content-link" href="movies-blocks.html">crime</a>,
-                    <a class="content-link" href="movies-blocks.html">comedy</a>
-                  </div> -->
                   <div class="entity-info">
                     <div class="info-lines">
                       <div class="info info-short">
@@ -33,7 +29,9 @@
                       </div>
                       <div class="info info-short">
                         <span class="text-theme info-icon"><i class="fas fa-calendar"></i></span>
-                        <span class="info-text"><?= $np['release_date']; ?></span>
+                        <span class="info-text">
+                          <?= date("d M Y", strtotime($np['release_date'])); ?>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -74,7 +72,7 @@
           <img src="https://image.tmdb.org/t/p/w500/<?= $p['poster_path']; ?>" class="card-img-top" alt="<?= $p['original_title']; ?>">
           <div class="card-body">
             <h4 class="entity-title">
-              <a class="content-link" href="#"><?= $p['title']; ?></a>
+              <a class="content-link" href="<?= BASEURL; ?>/home/detail/<?= $p['id']; ?>"><?= $p['title']; ?></a>
             </h4> 
           </div>
           <div class="card-footer">
@@ -86,7 +84,7 @@
                 </div>
                 <div class="info info-short">
                   <span class="text-theme info-icon"><i class="fas fa-calendar"></i></span>
-                  <span class="info-text"><?= $p['release_date']; ?></span>
+                  <span class="info-text"> <?= date("d M Y", strtotime($p['release_date'])); ?></span>
                 </div>
               </div>
             </div>

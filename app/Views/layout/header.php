@@ -37,15 +37,10 @@
           <div class="navbar-collapse">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="movies-blocks.html">Beranda</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact-us.html">Tentang</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
             </ul>
           </div>
         </nav>
       </div>
     </header>
-  </body>
-</html>

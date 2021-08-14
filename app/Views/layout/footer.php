@@ -1,6 +1,6 @@
     <footer class="section-text-white footer-links bg-darken">
       <div class="footer-copy">
-        <div class="container text-center">Copyright 2019 &copy; AmigosThemes. All rights reserved.</div>
+        <div class="container text-center">&copy; 2021 - Rahman Insani</div>
       </div>
     </footer>
 

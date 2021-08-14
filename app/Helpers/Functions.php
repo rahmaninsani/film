@@ -8,9 +8,8 @@ function translate($text)
   $arr = json_decode($json, TRUE);
   $result = $arr['sentences'][0]['trans'];
 
-  return $result; 
+  return $result;
 
 }
-
 
 ?>
