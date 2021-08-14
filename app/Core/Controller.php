@@ -1,7 +1,5 @@
 <?php
 
-// namespace App\Controllers;
-
 class Controller 
 {
   public function view($view, $data = []) {
