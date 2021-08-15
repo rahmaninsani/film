@@ -26,7 +26,7 @@
   <body class="body">
     <header class="header header-horizontal header-view-pannel">
       <div class="container">
-        <nav class="navbar">
+        <nav class="navbar sticky-top">
           <button class="navbar-toggler" type="button">
             <span class="th-dots-active-close th-dots th-bars">
               <span></span>
@@ -40,6 +40,10 @@
                 <a class="nav-link" href="/">Home</a>
               </li>
             </ul>
+            <form action="<?= BASEURL; ?>/home/cari" method="POST" class="form-inline my-2 my-lg-0 ml-auto">
+              <input type="text" name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Cari" autocomplete="off">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit">Cari</button>
+            </form>
           </div>
         </nav>
       </div>

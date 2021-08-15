@@ -77,6 +77,18 @@ class MovieModel
     return $result; 
 
   }
+
+  public function getSearch()
+  {
+    $keyword = $_POST['keyword'];
+    $keyword = urlencode($keyword);
+    $request = "https://api.themoviedb.org/3/search/movie?api_key=".APIKEY."&language=en-US&query=".$keyword."&page=1&include_adult=false";
+    $json = file_get_contents($request);
+    $arr = json_decode($json, TRUE);
+    $result = $arr['results'];
+
+    return $result; 
+  }
 }
 
 ?>

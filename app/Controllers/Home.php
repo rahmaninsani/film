@@ -65,6 +65,25 @@ class Home extends Controller
 
   }
 
+  public function cari()
+  {
+    if(! isset($_POST['submit'])) {
+      header('Location: /');
+      exit;
+    }
+
+    $results = $this->movieModel->getSearch();
+
+    $data = [
+      'title' => 'Pencarian Film',
+      'results' => $results,
+    ];
+    
+    $this->view('layout/header', $data);
+    $this->view('home/cari', $data);
+    $this->view('layout/footer');
+  }
+
 }
 
 ?>
