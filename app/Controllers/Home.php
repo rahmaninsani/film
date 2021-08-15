@@ -35,6 +35,20 @@ class Home extends Controller
   public function detail($id)
   {
     $detail = $this->movieModel->getMovieDetails($id);
+
+    if(! $detail) {
+      $data = [
+        'title' => 'Detail Film Tidak Ditemukan',
+        'message' => "Detail film dengan ID $id tidak ditemukan",
+      ];
+      
+      $this->view('layout/header', $data);
+      $this->view('home/404', $data);
+      $this->view('layout/footer');
+
+      exit;
+    }
+
     $video = $this->movieModel->getVideos($id);
     $credit = $this->movieModel->getCredits($id);
     $review = $this->movieModel->getReviews($id);
@@ -74,8 +88,21 @@ class Home extends Controller
 
     $results = $this->movieModel->getSearch();
 
+    if(! $results) {
+      $data = [
+        'title' => 'Film Tidak Ditemukan',
+        'message' => "Film " . $_POST['keyword'] . " tidak ditemukan",
+      ];
+      
+      $this->view('layout/header', $data);
+      $this->view('home/404', $data);
+      $this->view('layout/footer');
+
+      exit;
+    }
+
     $data = [
-      'title' => 'Pencarian Film',
+      'title' => 'Hasil Pencarian Film',
       'results' => $results,
     ];
     

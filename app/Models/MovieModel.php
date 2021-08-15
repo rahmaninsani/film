@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Exception;
+
 class MovieModel 
 {
   public function getNowPlaying()
@@ -28,11 +30,9 @@ class MovieModel
   public function getMovieDetails($id)
   {
     $request = "https://api.themoviedb.org/3/movie/$id?api_key=".APIKEY."&language=en-US";
-    $json = file_get_contents($request);
+    $json = @file_get_contents($request);
     $result = json_decode($json, TRUE);
-    
     return $result; 
-
   }
 
   public function getVideos($id)
@@ -83,7 +83,7 @@ class MovieModel
     $keyword = $_POST['keyword'];
     $keyword = urlencode($keyword);
     $request = "https://api.themoviedb.org/3/search/movie?api_key=".APIKEY."&language=en-US&query=".$keyword."&page=1&include_adult=false";
-    $json = file_get_contents($request);
+    $json = @file_get_contents($request);
     $arr = json_decode($json, TRUE);
     $result = $arr['results'];
 
